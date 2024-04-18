@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MarketPlace{% endblock %}
+
+{% block body %}
+    <h1>Create new MarketPlace</h1>
+
+    {{ include('market_place/_form.html.twig') }}
+
+    <a href="{{ path('app_market_place_index') }}">back to list</a>
+{% endblock %}

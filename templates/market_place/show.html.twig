@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product Details{% endblock %}
+
+{% block body %}
+    <h1>{{ market_place.ProdName }}</h1>
+
+    <p>{{ market_place.ProdDescription }}</p>
+    <p>Price: {{ market_place.Price }}</p>
+    <p>Quantity: {{ market_place.Quantity }}</p>
+    <p>Date: {{ market_place.DateProd ? market_place.DateProd|date('Y-m-d') : '' }}</p>
+
+    <!-- Review Form -->
+
+    {{ include('avis/_form.html.twig') }}
+
+
+    <a href="{{ path('app_market_place_index') }}">Back to Product List</a>
+
+    {{ include('market_place/_delete_form.html.twig') }}
+{% endblock %}

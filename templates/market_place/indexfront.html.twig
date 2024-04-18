@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        {% for market_place in market_places %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ market_place.Image }}" alt="{{ market_place.ProdName }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ market_place.ProdName }}</h5>
+                        <p class="card-text">{{ market_place.ProdDescription }}</p>
+                        <p>
+                            {% if market_place.avis|length > 0 %}
+                                {% for avis in market_place.avis %}
+                                    {{ avis.note }}
+                                    {% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                No Reviews Assigned
+                            {% endif %}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="{{ path('app_market_place_show', { 'id': market_place.id }) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                            </div>
+                            <small class="text-muted">{{ market_place.Price }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
